@@ -14,23 +14,18 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/h2-console/**").permitAll()
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/note/list", true)
-                        .permitAll()
-                )
+                        .permitAll())
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login?logout")
-                        .permitAll()
-                )
+                        .permitAll())
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**")
-                )
+                        .ignoringRequestMatchers("/h2-console/**"))
                 .headers(headers -> headers
-                        .frameOptions().disable()
-                );
+                        .frameOptions().disable());
 
         return http.build();
     }
