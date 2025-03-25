@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Note List</title>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <p>Logged in as: <span sec:authentication="name"></span></p>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+
+<h1>Notes</h1>
+<table>
+    <!-- Інша частина шаблону залишається незмінною -->
+</table>
+</body>
+</html>
